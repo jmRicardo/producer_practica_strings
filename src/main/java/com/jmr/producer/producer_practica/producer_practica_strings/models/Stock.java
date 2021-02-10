@@ -26,6 +26,7 @@ public class Stock {
     @JsonBackReference(value="stock-brandmodel")
     @JoinColumn(name = "id_brand_model")
     private BrandModel brandModel;
+
     private int stock;
 
 }

@@ -1,6 +1,7 @@
 package com.jmr.producer.producer_practica.producer_practica_strings.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,8 +22,8 @@ public class BrandModel {
     @Column(name = "id_brand_model")
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value="brandmodel-brand")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonManagedReference
     @JoinColumn(name = "id_brand")
     private Brand brand;
 
