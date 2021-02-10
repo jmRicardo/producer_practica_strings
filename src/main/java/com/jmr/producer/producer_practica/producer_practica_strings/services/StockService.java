@@ -16,7 +16,7 @@ public class StockService {
         this.stockRepository = stockRepository;
     }
 
-    public List<Stock> getAll()
+    public List<Stock> all()
     {
         return this.stockRepository.findAll();
     }

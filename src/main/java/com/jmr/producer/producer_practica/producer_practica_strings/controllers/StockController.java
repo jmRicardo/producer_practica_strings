@@ -28,6 +28,6 @@ public class StockController {
     @GetMapping("/stock")
     public List<Stock> getAll()
     {
-        return stockService.getAll();
+        return stockService.all();
     }
 }

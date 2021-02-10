@@ -3,9 +3,11 @@ package com.jmr.producer.producer_practica.producer_practica_strings.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
+@ToString
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
