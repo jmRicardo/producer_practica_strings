@@ -28,6 +28,6 @@ public class Brand {
 
     @OneToMany(mappedBy = "brand",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonBackReference
-    private List<BrandModel> list;
+    private List<BrandModel> listBrandModel;
 
 }
