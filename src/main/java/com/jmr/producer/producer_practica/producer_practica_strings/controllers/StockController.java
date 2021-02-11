@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/stock")
 public class StockController {
 
     private final StockService stockService;
@@ -25,7 +25,7 @@ public class StockController {
         return "TEST";
     }
 
-    @GetMapping("/stock")
+    @GetMapping("/all")
     public List<Stock> getAll()
     {
         return stockService.all();
