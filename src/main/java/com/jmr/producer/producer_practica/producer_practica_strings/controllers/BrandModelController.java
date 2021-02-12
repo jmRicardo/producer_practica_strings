@@ -2,9 +2,7 @@ package com.jmr.producer.producer_practica.producer_practica_strings.controllers
 
 import com.jmr.producer.producer_practica.producer_practica_strings.models.BrandModel;
 import com.jmr.producer.producer_practica.producer_practica_strings.services.BrandModelService;
-import javassist.compiler.SymbolTable;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
