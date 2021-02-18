@@ -19,6 +19,12 @@ public class TestController {
     @Value("${configuracion.texto}")
     private String texto;
 
+    @GetMapping("/connection")
+    public String testConnection()
+    {
+        return "conexion exitosa!";
+    }
+
     @GetMapping()
     public ResponseEntity<?> getEnviormentVariable(){
 
