@@ -1,6 +1,6 @@
 package com.jmr.producer.producer_practica.producer_practica_strings.services;
 
-import com.jmr.producer.producer_practica.producer_practica_strings.models.BrandModel;
+import com.jmr.practica.entities_practica.libreria_custom_maven_practica.models.entities.BrandModel;
 import com.jmr.producer.producer_practica.producer_practica_strings.repositories.BrandModelRepository;
 import org.springframework.stereotype.Service;
 

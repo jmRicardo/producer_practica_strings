@@ -1,6 +1,6 @@
 package com.jmr.producer.producer_practica.producer_practica_strings.repositories;
 
-import com.jmr.producer.producer_practica.producer_practica_strings.models.Stock;
+import com.jmr.practica.entities_practica.libreria_custom_maven_practica.models.entities.Stock;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
 package com.jmr.producer.producer_practica.producer_practica_strings.services;
 
+import com.jmr.practica.entities_practica.libreria_custom_maven_practica.models.entities.Stock;
 import com.jmr.producer.producer_practica.producer_practica_strings.exceptions.StockNotFound;
-import com.jmr.producer.producer_practica.producer_practica_strings.models.Stock;
 import com.jmr.producer.producer_practica.producer_practica_strings.repositories.StockRepository;
 import org.springframework.stereotype.Service;
 
