@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jmr.producer.producer_practica</groupId>
-    <artifactId>producer_practica_strings</artifactId>
+    <artifactId>producer_strings_practica</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>producer_practica_strings</name>
+    <name>producer_strings_practica</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>15</java.version>
