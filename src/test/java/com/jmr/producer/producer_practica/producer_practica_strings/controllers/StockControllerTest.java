@@ -29,11 +29,6 @@ class StockControllerTest {
                 .andExpect(content().string(containsString("TEST FROM STOCK/TEST")));
     }
 
-
-    @Test
-    void test1() {
-    }
-
     @Test
     void getAll() {
     }

@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +23,8 @@ class StockServiceTest {
     private static final long ID_STOCK = 1;
 
     private static final long ID_BRAND_MODEL = 1;
+
+    public static final long ID_BRAND = 1;
 
     @Mock
     StockRepository stockRepository;
@@ -79,7 +83,7 @@ class StockServiceTest {
         }
 
         @Test
-        void findById()
+        void findByIdSuccess()
         {
             Stock stock = mock(Stock.class);
 
@@ -94,7 +98,23 @@ class StockServiceTest {
 
 
         @Test
-        void findByBrand() {
+        void findByBrandSuccess() {
+
+            when(stockRepository.findByBrand(ID_BRAND)).thenReturn(stockList);
+
+            List<Stock> data = stockService.findByBrand(ID_BRAND);
+
+            verify(stockRepository,times(1)).findByBrand(ID_BRAND);
+
+            assertEquals(stockList,data);
+        }
+
+        @Test
+        void findByBrandNotFound()
+        {
+            when(stockRepository.findByBrand(ID_BRAND)).thenReturn(Collections.emptyList());
+
+            assertThrows(StockNotFound.class, () -> stockService.findByBrand(ID_BRAND));
         }
     }
 
