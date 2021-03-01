@@ -4,6 +4,8 @@ import com.jmr.practica.entities_practica.libreria_custom_maven_practica.models.
 import com.jmr.producer.producer_practica.producer_practica_strings.exceptions.StockNotFound;
 import com.jmr.producer.producer_practica.producer_practica_strings.repositories.StockRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -38,18 +40,6 @@ class StockServiceTest {
     }
 
     @Test
-    void findByBrandModel() {
-
-        when(stockRepository.findByBrandModel(ID_BRAND_MODEL)).thenReturn(stockList);
-
-        List<Stock> data = stockService.findByBrandModel(ID_BRAND_MODEL);
-
-        verify(stockRepository,times(1)).findByBrandModel(ID_BRAND_MODEL);
-
-        assertEquals(stockList,data);
-    }
-
-    @Test
     void createStock()
     {
         Stock stock = mock(Stock.class);
@@ -59,28 +49,48 @@ class StockServiceTest {
         verify(stockRepository,times(1)).save(stock);
     }
 
-
-
-    @Test
-    void findByIdNotFound()
+    @Nested
+    @DisplayName("Test para todos los find del service")
+    class findTests
     {
-        when(stockRepository.findById(ID_STOCK)).thenReturn(Optional.empty());
+        @Test
+        void findByBrandModel() {
 
-        assertThrows(StockNotFound.class, () -> stockService.findById(ID_STOCK));
-    }
+            when(stockRepository.findByBrandModel(ID_BRAND_MODEL)).thenReturn(stockList);
 
-    @Test
-    void findById()
-    {
-        Stock stock = mock(Stock.class);
+            List<Stock> data = stockService.findByBrandModel(ID_BRAND_MODEL);
 
-        when(stockRepository.findById(ID_STOCK)).thenReturn(Optional.ofNullable(stock));
+            verify(stockRepository,times(1)).findByBrandModel(ID_BRAND_MODEL);
 
-        Stock data = stockService.findById(ID_STOCK);
+            assertEquals(stockList,data);
+        }
 
-        verify(stockRepository,times(1)).findById(ID_STOCK);
+        @Test
+        void findByIdNotFound()
+        {
+            when(stockRepository.findById(ID_STOCK)).thenReturn(Optional.empty());
 
-        assertEquals(stock,data);
+            assertThrows(StockNotFound.class, () -> stockService.findById(ID_STOCK));
+        }
+
+        @Test
+        void findById()
+        {
+            Stock stock = mock(Stock.class);
+
+            when(stockRepository.findById(ID_STOCK)).thenReturn(Optional.ofNullable(stock));
+
+            Stock data = stockService.findById(ID_STOCK);
+
+            verify(stockRepository,times(1)).findById(ID_STOCK);
+
+            assertEquals(stock,data);
+        }
+
+
+        @Test
+        void findByBrand() {
+        }
     }
 
     @Test
@@ -95,7 +105,4 @@ class StockServiceTest {
         verify(stockRepository, times(1)).findAll();
     }
 
-    @Test
-    void findByBrand() {
-    }
 }
