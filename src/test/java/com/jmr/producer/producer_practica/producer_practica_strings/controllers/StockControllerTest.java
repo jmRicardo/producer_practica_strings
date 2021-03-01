@@ -24,7 +24,7 @@ class StockControllerTest {
     private StockService service;
 
     @Test
-    public void greetingShouldReturnMessageFromService() throws Exception {
+    void testShouldReturnMessageFromService() throws Exception {
         this.mockMvc.perform(get("/stock/test")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("TEST FROM STOCK/TEST")));
     }

@@ -29,7 +29,14 @@ class StockServiceTest {
 
 
     @Test
-    void all() {
+    void createStockTest() {
+        Stock stock = mock(Stock.class);
+        stockService.createStock(stock);
+        verify(stockRepository,times(1)).save(stock);
+    }
+
+    @Test
+    void allTest() {
 
         List<Stock> stock = Collections.emptyList();
 
@@ -42,9 +49,6 @@ class StockServiceTest {
         verify(stockRepository, times(1)).findAll();
     }
 
-    @Test
-    void createStock() {
-    }
 
     @Test
     void findById() {
