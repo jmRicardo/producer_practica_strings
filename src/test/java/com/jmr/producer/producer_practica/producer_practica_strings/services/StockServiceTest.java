@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +50,14 @@ class StockServiceTest {
     @DisplayName("Test para todos los find del service")
     class findTests
     {
+        @Test
+        void findByBrandModelNotFound()
+        {
+            when(stockRepository.findById(ID_BRAND_MODEL)).thenReturn(Optional.empty());
+
+            assertThrows(StockNotFound.class, () -> stockService.findByBrandModel(ID_BRAND_MODEL));
+        }
+
         @Test
         void findByBrandModel() {
 
