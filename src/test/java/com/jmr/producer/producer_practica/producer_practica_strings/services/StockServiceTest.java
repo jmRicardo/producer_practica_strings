@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -20,15 +21,32 @@ class StockServiceTest {
 
     private static final long ID_STOCK = 1;
 
+    private static final long ID_BRAND_MODEL = 1;
+
     @Mock
     StockRepository stockRepository;
 
     @InjectMocks
     StockService stockService;
 
+    @Mock
+    List<Stock> stockList;
+
     @BeforeEach
     void setUp() {
         openMocks(this);
+    }
+
+    @Test
+    void findByBrandModel() {
+
+        when(stockRepository.findByBrandModel(ID_BRAND_MODEL)).thenReturn(stockList);
+
+        List<Stock> data = stockService.findByBrandModel(ID_BRAND_MODEL);
+
+        verify(stockRepository,times(1)).findByBrandModel(ID_BRAND_MODEL);
+
+        assertEquals(stockList,data);
     }
 
     @Test
@@ -41,10 +59,13 @@ class StockServiceTest {
         verify(stockRepository,times(1)).save(stock);
     }
 
+
+
     @Test
     void findByIdNotFound()
     {
         when(stockRepository.findById(ID_STOCK)).thenReturn(Optional.empty());
+
         assertThrows(StockNotFound.class, () -> stockService.findById(ID_STOCK));
     }
 
@@ -65,20 +86,13 @@ class StockServiceTest {
     @Test
     void all()
     {
-        List<Stock> stock = Collections.emptyList();
-
-        when(stockRepository.findAll()).thenReturn(stock);
+        when(stockRepository.findAll()).thenReturn(stockList);
 
         List<Stock> listResult = stockService.all();
 
-        assertEquals(stock, listResult);
+        assertEquals(stockList, listResult);
 
         verify(stockRepository, times(1)).findAll();
-    }
-
-
-    @Test
-    void findByBrandModel() {
     }
 
     @Test
